@@ -186,8 +186,8 @@ export default function Home() {
         <div className="pb-20">
           <div className="mx-4 md:mx-0">
             <SectionHeading text="Snapshot" />
-            <div className="grid grid-cols-1 gap-8 md:gap-8">
-              <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="flex flex-col gap-2">
                 <AnimatedWrapper>
                   <Image
                     src="/top_snap_1.jpg"
@@ -199,7 +199,7 @@ export default function Home() {
                 </AnimatedWrapper>
                 <SectionText text={'「 」\nISO 200, F4.0, 1/500s'} />
               </div>
-              <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
+              <div className="md:col- flex flex-col gap-2 md:col-start-2 md:row-start-2">
                 <AnimatedWrapper>
                   <Image
                     src="/top_snap_2.jpg"
@@ -215,8 +215,8 @@ export default function Home() {
           </div>
           <div className="mx-4 mt-8 md:mx-0">
             <SectionHeading text="Abstract" />
-            <div className="grid grid-cols-1 gap-8 md:gap-8">
-              <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="flex flex-col gap-2">
                 <AnimatedWrapper>
                   <Image
                     src="/top_abstract_1.jpg"
@@ -228,7 +228,7 @@ export default function Home() {
                 </AnimatedWrapper>
                 <SectionText text={'「 」\nISO 200, F4.0, 1/500s'} />
               </div>
-              <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
+              <div className="md:col- flex flex-col gap-2 md:col-start-2 md:row-start-2">
                 <AnimatedWrapper>
                   <Image
                     src="/top_abstract_2.jpg"
