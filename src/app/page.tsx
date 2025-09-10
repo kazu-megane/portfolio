@@ -197,7 +197,7 @@ export default function Home() {
                     className="aspect-[3/2] object-contain"
                   />
                 </AnimatedWrapper>
-                <SectionText text={'「 」\nISO 200, F4.0, 1/500s'} />
+                <SectionText text={'「 」\nISO 200, F4.0, 1/500s, 35mm'} />
               </div>
               <div className="md:col- flex flex-col gap-2 md:col-start-2 md:row-start-2">
                 <AnimatedWrapper>
@@ -226,7 +226,7 @@ export default function Home() {
                     className="aspect-[3/2] h-full w-full object-contain"
                   />
                 </AnimatedWrapper>
-                <SectionText text={'「 」\nISO 200, F4.0, 1/500s'} />
+                <SectionText text={'「spectrum」\nISO 200, F2.8, 1/25s, 90mm'} />
               </div>
               <div className="md:col- flex flex-col gap-2 md:col-start-2 md:row-start-2">
                 <AnimatedWrapper>
@@ -238,7 +238,10 @@ export default function Home() {
                     className="aspect-[3/2] h-full w-full object-contain md:col-start-2 md:row-start-1"
                   />
                 </AnimatedWrapper>
-                <SectionText text={'「 」\nISO 200, F4.0 ,1/90s, 28mm'} className="md:col-start-1 md:row-start-1" />
+                <SectionText
+                  text={'「fireworks」\nISO 80, F9.0, 6.0s, 23mm'}
+                  className="md:col-start-1 md:row-start-1"
+                />
               </div>
             </div>
           </div>
