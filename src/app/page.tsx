@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const MENU_DATA = [
@@ -25,6 +25,43 @@ const SectionHeading = ({ text }: { text: string }) => {
 const SectionText = ({ text, className }: { text: string; className?: string }) => {
   return (
     <p className={twMerge('text-center text-xs whitespace-pre-line text-stone-600 md:text-sm', className)}>{text}</p>
+  );
+};
+
+const AnimatedWrapper = ({ children }: { children: ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '0px',
+        threshold: 0.1,
+      },
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={twMerge('transition-opacity duration-1000 ease-in-out', isVisible ? 'opacity-100' : 'opacity-0')}
+    >
+      {children}
+    </div>
   );
 };
 
@@ -151,23 +188,27 @@ export default function Home() {
             <SectionHeading text="Snapshot" />
             <div className="grid grid-cols-1 gap-8 md:gap-8">
               <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
-                <Image
-                  src="/top_snap_1.jpg"
-                  width={3840}
-                  height={2539}
-                  alt=""
-                  className="aspect-[3/2] object-contain"
-                />
+                <AnimatedWrapper>
+                  <Image
+                    src="/top_snap_1.jpg"
+                    width={3840}
+                    height={2539}
+                    alt=""
+                    className="aspect-[3/2] object-contain"
+                  />
+                </AnimatedWrapper>
                 <SectionText text={'「 」\nISO 200, F4.0, 1/500s'} />
               </div>
               <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
-                <Image
-                  src="/top_snap_2.jpg"
-                  width={552}
-                  height={368}
-                  alt=""
-                  className="aspect-[3/2] h-full w-full object-contain md:col-start-2 md:row-start-1"
-                />
+                <AnimatedWrapper>
+                  <Image
+                    src="/top_snap_2.jpg"
+                    width={552}
+                    height={368}
+                    alt=""
+                    className="aspect-[3/2] h-full w-full object-contain md:col-start-2 md:row-start-1"
+                  />
+                </AnimatedWrapper>
                 <SectionText text={'「 」\nISO 200, F4.0 ,1/90s, 28mm'} className="md:col-start-1 md:row-start-1" />
               </div>
             </div>
@@ -176,23 +217,27 @@ export default function Home() {
             <SectionHeading text="Abstract" />
             <div className="grid grid-cols-1 gap-8 md:gap-8">
               <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
-                <Image
-                  src="/top_abstract_1.jpg"
-                  width={1920}
-                  height={2881}
-                  alt=""
-                  className="aspect-[3/2] h-full w-full object-contain"
-                />
+                <AnimatedWrapper>
+                  <Image
+                    src="/top_abstract_1.jpg"
+                    width={1920}
+                    height={2881}
+                    alt=""
+                    className="aspect-[3/2] h-full w-full object-contain"
+                  />
+                </AnimatedWrapper>
                 <SectionText text={'「 」\nISO 200, F4.0, 1/500s'} />
               </div>
               <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 md:gap-6">
-                <Image
-                  src="/top_abstract_2.jpg"
-                  width={2080}
-                  height={3120}
-                  alt=""
-                  className="aspect-[3/2] h-full w-full object-contain md:col-start-2 md:row-start-1"
-                />
+                <AnimatedWrapper>
+                  <Image
+                    src="/top_abstract_2.jpg"
+                    width={2080}
+                    height={3120}
+                    alt=""
+                    className="aspect-[3/2] h-full w-full object-contain md:col-start-2 md:row-start-1"
+                  />
+                </AnimatedWrapper>
                 <SectionText text={'「 」\nISO 200, F4.0 ,1/90s, 28mm'} className="md:col-start-1 md:row-start-1" />
               </div>
             </div>
