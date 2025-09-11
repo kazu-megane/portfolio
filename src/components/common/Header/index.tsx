@@ -6,9 +6,10 @@ import { useState, useEffect, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const MENU_DATA = [
+  { title: 'HOME', href: '/' },
   { title: 'ABOUT', href: '/about' },
-  { title: 'WORKS', href: '#' },
-  { title: 'ARCHIVE', href: '#' },
+  // { title: 'WORKS', href: '#' },
+  // { title: 'ARCHIVE', href: '#' },
   { title: 'CONTACT', href: '/contact' },
 ];
 const MENU_ID = 'header-menu';
@@ -50,7 +51,14 @@ export const Header = ({ className }: Props) => {
           <ul className="flex items-center gap-[80px] tracking-[-.02em] lg:gap-[120px]">
             {MENU_DATA.map((item) => (
               <li key={item.title}>
-                <Link href={item.href} className="transition-opacity ease-in hover:opacity-50">
+                <Link
+                  href={item.href}
+                  className={twMerge(
+                    'transition-opacity ease-in hover:opacity-50',
+                    pathname === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
+                    isTopPage ? 'decoration-white' : '',
+                  )}
+                >
                   {item.title}
                 </Link>
               </li>
@@ -97,7 +105,13 @@ export const Header = ({ className }: Props) => {
                   transitionDelay: isMenuOpen ? `${index * 100}ms` : `${(MENU_DATA.length - 1 - index) * 100}ms`,
                 }}
               >
-                <Link href={item.href} className="font-serif text-lg text-stone-800">
+                <Link
+                  href={item.href}
+                  className={twMerge(
+                    'font-serif text-lg text-stone-800',
+                    pathname === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
+                  )}
+                >
                   {item.title}
                 </Link>
               </li>

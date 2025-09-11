@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { ContentContainer } from '@/components/common/ContentContainer';
-import { SNS_DATA } from '@/constants';
+import { CONTACT_DATA } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Kazuya Hashimoto - Portfolio | Contact',
@@ -20,15 +20,15 @@ export default function Contact() {
               <span>Contact us here for any inquiries.</span>
             </p>
             <ul className="flex flex-col gap-2">
-              {SNS_DATA.map((sns) => (
-                <li key={sns.name} className="flex">
+              {CONTACT_DATA.map((contact) => (
+                <li key={contact.name} className="flex">
                   <a
-                    href={sns.url}
+                    href={contact.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-1 font-serif text-sm underline hover:opacity-50 md:text-base"
+                    className="py-1 font-serif text-sm underline ease-in hover:opacity-50 md:text-base"
                   >
-                    {sns.name}
+                    {contact.name}
                   </a>
                 </li>
               ))}

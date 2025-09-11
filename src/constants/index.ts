@@ -1,1 +1,1 @@
-export { SNS_DATA } from './sns';
+export { SNS_DATA, CONTACT_DATA } from './sns';

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { ContentContainer } from '@/components/common/ContentContainer';
+import { SNS_DATA } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Kazuya Hashimoto - Portfolio | About',
@@ -51,6 +52,29 @@ const ScopeOfWork = () => {
   );
 };
 
+const SnsLinks = () => {
+  return (
+    <div className="flex flex-col gap-6">
+      <h3 className="font-serif text-3xl text-stone-500">SNS Links</h3>
+      <ul className="flex gap-3 text-xs">
+        {SNS_DATA.map((sns) => (
+          <li key={sns.name}>
+            <a
+              href={sns.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={sns.name}
+              className="flex p-1 transition-opacity ease-in hover:opacity-50"
+            >
+              <sns.icon size={18} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 const Biography = () => {
   const data: Array<{
     year: string;
@@ -97,6 +121,7 @@ export default function About() {
           <div className="mt-10 flex flex-col gap-16 md:gap-20">
             <Introduction />
             <ScopeOfWork />
+            <SnsLinks />
           </div>
         </section>
         <section className="flex flex-col items-start md:flex-row md:gap-10">
