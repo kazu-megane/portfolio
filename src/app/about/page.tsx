@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { ContentContainer } from '@/components/common/ContentContainer';
 
 export const metadata: Metadata = {
   title: 'Kazuya Hashimoto - Portfolio | About',
@@ -87,24 +88,26 @@ const Biography = () => {
 
 export default function About() {
   return (
-    <div className="mx-4 mt-10 flex flex-col gap-20 pb-40 md:mx-6 md:mt-20 md:gap-24">
-      <section className="flex flex-col items-start md:flex-row md:gap-10">
-        <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
-          ABOUT
-        </h2>
-        <div className="mt-10 flex flex-col gap-16 md:gap-20">
-          <Introduction />
-          <ScopeOfWork />
-        </div>
-      </section>
-      <section className="flex flex-col items-start md:flex-row md:gap-10">
-        <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
-          BIOGRAPHY
-        </h2>
-        <div className="mt-10">
-          <Biography />
-        </div>
-      </section>
-    </div>
+    <ContentContainer>
+      <div className="flex flex-col gap-20 md:gap-24">
+        <section className="flex flex-col items-start md:flex-row md:gap-10">
+          <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
+            ABOUT
+          </h2>
+          <div className="mt-10 flex flex-col gap-16 md:gap-20">
+            <Introduction />
+            <ScopeOfWork />
+          </div>
+        </section>
+        <section className="flex flex-col items-start md:flex-row md:gap-10">
+          <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
+            BIOGRAPHY
+          </h2>
+          <div className="mt-10">
+            <Biography />
+          </div>
+        </section>
+      </div>
+    </ContentContainer>
   );
 }

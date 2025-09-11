@@ -36,10 +36,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${shipporiMincho.variable} ${lato.variable} ${geistMono.variable} min-h-screen bg-white antialiased`}
+        className={`${shipporiMincho.variable} ${lato.variable} ${geistMono.variable} flex min-h-screen flex-col bg-white antialiased`}
       >
         <Header />
-        <main>{children}</main>
+        <main className="flex grow flex-col">{children}</main>
         <footer className="fixed bottom-0 z-10 w-full p-4 text-center font-serif text-sm text-white mix-blend-difference">
           <small>&copy; kazuya hashimoto</small>
         </footer>

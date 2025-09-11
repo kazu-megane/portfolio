@@ -1,0 +1,41 @@
+import { Metadata } from 'next';
+import { ContentContainer } from '@/components/common/ContentContainer';
+import { SNS_DATA } from '@/constants';
+
+export const metadata: Metadata = {
+  title: 'Kazuya Hashimoto - Portfolio | Contact',
+  description:
+    'Portfolio of Kazuya Hashimoto, a design engineer and designer, photographer. | デザインエンジニア・デザイナー・フォトグラファー 橋本和也のポートフォリオサイト',
+};
+
+export default function Contact() {
+  return (
+    <ContentContainer>
+      <div className="grid grow place-items-end">
+        <section>
+          <h2 className="font-serif text-4xl tracking-[.2em] text-stone-500">CONTACT</h2>
+          <div className="flex flex-col gap-4">
+            <p className="mt-2 flex flex-col gap-1 text-sm">
+              <span>各種お問い合わせはこちらから</span>
+              <span>Contact us here for any inquiries.</span>
+            </p>
+            <ul className="flex flex-col gap-2">
+              {SNS_DATA.map((sns) => (
+                <li key={sns.name} className="flex">
+                  <a
+                    href={sns.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-1 font-serif text-sm underline hover:opacity-50 md:text-base"
+                  >
+                    {sns.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
+    </ContentContainer>
+  );
+}

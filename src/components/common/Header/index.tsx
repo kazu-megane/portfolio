@@ -9,7 +9,7 @@ const MENU_DATA = [
   { title: 'ABOUT', href: '/about' },
   { title: 'WORKS', href: '#' },
   { title: 'ARCHIVE', href: '#' },
-  { title: 'CONTACT', href: '#' },
+  { title: 'CONTACT', href: '/contact' },
 ];
 const MENU_ID = 'header-menu';
 
