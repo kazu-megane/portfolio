@@ -10,7 +10,7 @@ type Sns = {
 export const SNS_DATA: Sns[] = [
   { name: 'Instagram', url: 'https://www.instagram.com/kazuya_frame', icon: FaInstagram },
   { name: 'X', url: 'https://x.com/kazuya_frame', icon: FaXTwitter },
-  { name: 'GitHub', url: 'https://github.com/kazuya-frame', icon: FaGithub },
+  { name: 'GitHub', url: 'https://github.com/kazu-megane', icon: FaGithub },
   { name: 'note', url: 'https://note.com/kazuya_frame', icon: FaRegNoteSticky },
 ];
 
