@@ -20,7 +20,7 @@ const SectionText = ({ text, className }: { text: string; className?: string }) 
 export default function Home() {
   return (
     <>
-      <div className="grid h-screen place-items-center">
+      <div className="grid h-dvh place-items-center">
         <MainVisual />
       </div>
       <div className="pb-20">

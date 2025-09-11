@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${shipporiMincho.variable} ${lato.variable} ${geistMono.variable} flex min-h-screen flex-col bg-white antialiased`}
+        className={`${shipporiMincho.variable} ${lato.variable} ${geistMono.variable} flex min-h-dvh flex-col bg-white antialiased`}
       >
         <Header />
         <main className="flex grow flex-col">{children}</main>
