@@ -1,18 +1,8 @@
-'use client';
-
 import Image from 'next/image';
-import Link from 'next/link';
-import { ReactNode, useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-
-const MENU_DATA = [
-  { title: 'ABOUT', href: '#' },
-  { title: 'WORKS', href: '#' },
-  { title: 'ARCHIVE', href: '#' },
-  { title: 'CONTACT', href: '#' },
-];
-
-const MENU_ID = 'menu';
+import { Header } from '@/components/common/Header';
+import { MainVisual } from '@/components/top/MainVisual';
+import { AnimatedWrapper } from '@/components/common/AnimatedWrapper';
 
 const SectionHeading = ({ text }: { text: string }) => {
   return (
@@ -28,168 +18,13 @@ const SectionText = ({ text, className }: { text: string; className?: string }) 
   );
 };
 
-const AnimatedWrapper = ({ children }: { children: ReactNode }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: '0px',
-        threshold: 0.1,
-      },
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className={twMerge('transition-opacity duration-1000 ease-in-out', isVisible ? 'opacity-100' : 'opacity-0')}
-    >
-      {children}
-    </div>
-  );
-};
-
 export default function Home() {
-  const [blurValue, setBlurValue] = useState(8); // Initial blur value in pixels
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const newBlurValue = Math.max(0, 8 - scrollY / 50); // Decrease blur as user scrolls
-      setBlurValue(newBlurValue);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.querySelector('body')?.classList.add('overflow-hidden');
-    } else {
-      document.querySelector('body')?.classList.remove('overflow-hidden');
-    }
-  }, [isMenuOpen]);
-
   return (
-    <div className="flex flex-col bg-white">
+    <div className="relative flex flex-col bg-white">
+      <Header className="fixed top-[calc(50%-24px)] z-20 w-full -translate-y-1/2" />
       <main className="flex grow flex-col">
         <div className="grid h-screen grow place-items-center">
-          <div
-            className={twMerge(
-              'fixed z-20 mb-6 w-full px-4 font-serif text-xs text-white mix-blend-difference sm:px-6',
-              isMenuOpen ? 'hidden' : 'flex',
-            )}
-          >
-            <h1 className="grow tracking-[.2em]">
-              <button
-                type="button"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="cursor-pointer"
-              >
-                KAZUYA HASHIMOTO
-              </button>
-            </h1>
-            <nav aria-label="メイン">
-              <ul className="hidden items-center gap-[80px] tracking-[-.02em] md:flex lg:gap-[120px]">
-                {MENU_DATA.map((item) => (
-                  <li key={item.title}>
-                    <Link href={item.href} className="transition-opacity ease-in hover:opacity-50">
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <button
-              type="button"
-              aria-controls={MENU_ID}
-              aria-expanded={isMenuOpen}
-              aria-haspopup="true"
-              aria-label="Open menu"
-              onClick={() => {
-                setIsMenuOpen(true);
-              }}
-              className="absolute top-[50%] right-2 -translate-y-1/2 transform cursor-pointer p-3 tracking-[-.02em] transition-opacity ease-in hover:opacity-50 sm:right-3 md:hidden"
-            >
-              MENU
-            </button>
-          </div>
-          <div
-            id={MENU_ID}
-            className={twMerge(
-              'fixed top-0 left-0 z-30 flex h-full w-full items-center backdrop-blur-xl transition-opacity duration-300 ease-in-out',
-              isMenuOpen ? 'opacity-100' : 'invisible opacity-0',
-            )}
-            onClick={() => {
-              setIsMenuOpen(false);
-            }}
-          >
-            <nav className="mb-6 flex flex-col gap-4" aria-label="メイン">
-              <ul>
-                {MENU_DATA.map((item, index) => (
-                  <li
-                    key={item.title}
-                    className={twMerge(
-                      'p-4 text-center transition-all duration-300 ease-in-out',
-                      isMenuOpen ? 'opacity-100' : 'opacity-0',
-                    )}
-                    style={{
-                      transitionDelay: isMenuOpen ? `${index * 100}ms` : `${(MENU_DATA.length - 1 - index) * 100}ms`,
-                    }}
-                  >
-                    <Link
-                      href={item.href}
-                      className="font-serif text-lg text-stone-800"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                      }}
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="relative mb-6 grow px-4 text-right">
-              <button className="absolute top-[50%] right-2 -translate-y-1/2 cursor-pointer p-3 font-serif text-xs text-stone-600">
-                CLOSE
-              </button>
-            </div>
-          </div>
-          <div className="relative h-full w-full overflow-hidden">
-            <Image
-              src="/top_main.jpg"
-              alt=""
-              priority={true}
-              fill={true}
-              objectFit="cover"
-              loading="eager"
-              className="scale-110"
-              style={{ filter: `blur(${blurValue}px)` }}
-            />
-          </div>
+          <MainVisual />
         </div>
         <div className="pb-20">
           <div className="mx-4 md:mx-0">
