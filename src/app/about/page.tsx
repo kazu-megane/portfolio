@@ -75,8 +75,25 @@ const SnsLinks = () => {
   );
 };
 
+const BiographyContent = ({ data }: { data: Array<{ year: string; events: string[] }> }) => {
+  return (
+    <ul className="flex flex-col gap-6">
+      {data.map(({ year, events }, index) => (
+        <li key={index} className="flex items-baseline gap-4 text-xs">
+          <span className="w-20 shrink-0 font-mono text-stone-500">{year}</span>
+          <ul className="flex flex-col gap-2">
+            {events.map((event, eventIndex) => (
+              <li key={eventIndex}>{event}</li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const Biography = () => {
-  const data: Array<{
+  const jaData: Array<{
     year: string;
     events: string[];
   }> = [
@@ -94,19 +111,30 @@ const Biography = () => {
     },
   ];
 
+  const enData: Array<{
+    year: string;
+    events: string[];
+  }> = [
+    {
+      year: '2018-',
+      events: ['Joined LINE Yahoo Corporation', 'Engaged in service development as a Design Engineer'],
+    },
+    {
+      year: '2020-2023',
+      events: ['Operated Designship', 'Belonged to the engineering team, brand team, and still team'],
+    },
+    {
+      year: '2022-',
+      events: ['Started freelance work', 'Front-end development, UI/UX design, wedding photography, etc.'],
+    },
+  ];
+
   return (
-    <ul className="flex flex-col gap-6">
-      {data.map(({ year, events }, index) => (
-        <li key={index} className="flex items-baseline gap-4 text-xs">
-          <span className="w-20 shrink-0 font-mono text-stone-500">{year}</span>
-          <ul className="flex flex-col gap-2">
-            {events.map((event, eventIndex) => (
-              <li key={eventIndex}>{event}</li>
-            ))}
-          </ul>
-        </li>
-      ))}
-    </ul>
+    <div className="flex flex-col gap-6">
+      <BiographyContent data={jaData} />
+      <span className="h-[1px] w-full bg-stone-300"></span>
+      <BiographyContent data={enData} />
+    </div>
   );
 };
 
