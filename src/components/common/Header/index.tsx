@@ -45,7 +45,17 @@ export const Header = ({ className }: Props) => {
         )}
       >
         <h1 className={twMerge('tracking-[.2em]', isMenuOpen ? 'hidden' : '')}>
-          <Link href="/">KAZUYA HASHIMOTO</Link>
+          <Link
+            href="/"
+            onClick={(event) => {
+              if (isTopPage) {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
+            KAZUYA HASHIMOTO
+          </Link>
         </h1>
         <nav aria-label="メイン" className="hidden md:block">
           <ul className="flex items-center gap-[80px] tracking-[-.02em] lg:gap-[120px]">
@@ -53,6 +63,12 @@ export const Header = ({ className }: Props) => {
               <li key={item.title}>
                 <Link
                   href={item.href}
+                  onClick={(event) => {
+                    if (pathname === item.href) {
+                      event.preventDefault();
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
                   className={twMerge(
                     'transition-opacity ease-in hover:opacity-50',
                     pathname === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
@@ -107,6 +123,12 @@ export const Header = ({ className }: Props) => {
               >
                 <Link
                   href={item.href}
+                  onClick={(event) => {
+                    if (pathname === item.href) {
+                      event.preventDefault();
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
                   className={twMerge(
                     'font-serif text-lg text-stone-800',
                     pathname === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
