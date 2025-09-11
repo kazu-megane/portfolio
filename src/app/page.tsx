@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Suspense } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { MainVisual } from '@/components/top/MainVisual';
 import { AnimatedWrapper } from '@/components/common/AnimatedWrapper';
