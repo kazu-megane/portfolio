@@ -33,14 +33,17 @@ export const Header = ({ className }: Props) => {
 
   return (
     <>
+      {!isTopPage && <div className="h-[80px]" />}
       <header
         className={twMerge(
-          'relative flex px-4 font-serif text-xs text-white mix-blend-difference sm:px-6',
-          isTopPage ? 'fixed top-[calc(50%-24px)] z-20 w-full -translate-y-1/2' : 'sticky top-0 z-10 h-[80px] py-8',
+          'fixed z-20 flex w-full justify-between px-4 font-serif text-xs transition-all duration-500 ease-in-out sm:px-6',
+          isTopPage
+            ? 'top-[calc(50%-24px)] -translate-y-1/2 text-white mix-blend-difference'
+            : 'top-0 h-[80px] py-8 text-stone-800',
           className,
         )}
       >
-        <h1 className={twMerge('grow tracking-[.2em]', isMenuOpen ? 'hidden' : '')}>
+        <h1 className={twMerge('tracking-[.2em]', isMenuOpen ? 'hidden' : '')}>
           <Link href="/">KAZUYA HASHIMOTO</Link>
         </h1>
         <nav aria-label="メイン" className="hidden md:block">

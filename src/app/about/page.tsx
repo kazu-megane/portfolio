@@ -87,7 +87,7 @@ const Biography = () => {
 
 export default function About() {
   return (
-    <div className="mx-4 mt-10 flex flex-col gap-20 md:mx-6 md:mt-20 md:gap-24">
+    <div className="mx-4 mt-10 flex flex-col gap-20 pb-40 md:mx-6 md:mt-20 md:gap-24">
       <section className="flex flex-col items-start md:flex-row md:gap-10">
         <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
           ABOUT
