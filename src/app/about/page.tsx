@@ -63,10 +63,9 @@ const SnsLinks = () => {
               href={sns.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={sns.name}
               className="flex p-1 transition-opacity ease-in hover:opacity-50"
             >
-              <sns.icon size={18} />
+              <sns.icon size={18} role="img" aria-label={sns.name} />
             </a>
           </li>
         ))}
