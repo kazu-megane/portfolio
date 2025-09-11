@@ -37,10 +37,8 @@ export const Header = ({ className }: Props) => {
       {!isTopPage && <div className="h-[80px]" />}
       <header
         className={twMerge(
-          'fixed z-20 flex w-full justify-between px-4 font-serif text-xs transition-all duration-500 ease-in-out sm:px-6',
-          isTopPage
-            ? 'top-[calc(50%-24px)] -translate-y-1/2 text-white mix-blend-difference'
-            : 'top-0 h-[80px] py-8 text-stone-800',
+          'fixed top-0 z-20 flex h-[80px] w-full items-center justify-between px-4 font-serif text-xs transition-all duration-500 ease-in-out sm:px-6',
+          isTopPage ? 'translate-y-[calc(50svh-50%-24px)] text-white mix-blend-difference' : 'py-8 text-stone-800',
           className,
         )}
       >
