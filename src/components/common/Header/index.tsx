@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useState, useEffect, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const MENU_DATA = [
@@ -17,6 +18,7 @@ type Props = {
 };
 
 export const Header = ({ className }: Props) => {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -27,10 +29,16 @@ export const Header = ({ className }: Props) => {
     }
   }, [isMenuOpen]);
 
+  const isTopPage = useMemo(() => pathname === '/', [pathname]);
+
   return (
     <>
       <header
-        className={twMerge('relative flex px-4 font-serif text-xs text-white mix-blend-difference sm:px-6', className)}
+        className={twMerge(
+          'relative flex px-4 font-serif text-xs text-white mix-blend-difference sm:px-6',
+          isTopPage ? 'fixed top-[calc(50%-24px)] z-20 w-full -translate-y-1/2' : 'sticky top-0 z-10 h-[80px] py-8',
+          className,
+        )}
       >
         <h1 className={twMerge('grow tracking-[.2em]', isMenuOpen ? 'hidden' : '')}>
           <Link href="/">KAZUYA HASHIMOTO</Link>
@@ -86,13 +94,7 @@ export const Header = ({ className }: Props) => {
                   transitionDelay: isMenuOpen ? `${index * 100}ms` : `${(MENU_DATA.length - 1 - index) * 100}ms`,
                 }}
               >
-                <Link
-                  href={item.href}
-                  className="font-serif text-lg text-stone-800"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                  }}
-                >
+                <Link href={item.href} className="font-serif text-lg text-stone-800">
                   {item.title}
                 </Link>
               </li>

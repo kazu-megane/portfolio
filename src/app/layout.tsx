@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Lato, Geist_Mono, Shippori_Mincho } from 'next/font/google';
+import { Header } from '@/components/common/Header';
 import './globals.css';
 
 const shipporiMincho = Shippori_Mincho({
@@ -34,8 +35,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${shipporiMincho.variable} ${lato.variable} ${geistMono.variable} antialiased`}>
-        {children}
+      <body
+        className={`${shipporiMincho.variable} ${lato.variable} ${geistMono.variable} min-h-screen bg-white antialiased`}
+      >
+        <Header />
+        <main>{children}</main>
+        <footer className="fixed bottom-0 z-10 w-full p-4 text-center font-serif text-sm text-white mix-blend-difference">
+          <small>&copy; kazuya hashimoto</small>
+        </footer>
       </body>
     </html>
   );

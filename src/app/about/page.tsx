@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { Header } from '@/components/common/Header';
 
 export const metadata: Metadata = {
   title: 'Kazuya Hashimoto - Portfolio | About',
@@ -88,29 +87,24 @@ const Biography = () => {
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header className="sticky top-0 z-10 h-[80px] py-8" />
-      <main className="mx-4 mt-10 md:mx-6 md:mt-20">
-        <div className="flex flex-col gap-20 md:gap-24">
-          <section className="flex flex-col items-start md:flex-row md:gap-10">
-            <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
-              ABOUT
-            </h2>
-            <div className="mt-10 flex flex-col gap-16 md:gap-20">
-              <Introduction />
-              <ScopeOfWork />
-            </div>
-          </section>
-          <section className="flex flex-col items-start md:flex-row md:gap-10">
-            <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
-              BIOGRAPHY
-            </h2>
-            <div className="mt-10">
-              <Biography />
-            </div>
-          </section>
+    <div className="mx-4 mt-10 flex flex-col gap-20 md:mx-6 md:mt-20 md:gap-24">
+      <section className="flex flex-col items-start md:flex-row md:gap-10">
+        <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
+          ABOUT
+        </h2>
+        <div className="mt-10 flex flex-col gap-16 md:gap-20">
+          <Introduction />
+          <ScopeOfWork />
         </div>
-      </main>
+      </section>
+      <section className="flex flex-col items-start md:flex-row md:gap-10">
+        <h2 className="sticky top-[80px] w-full max-w-[280px] shrink-0 font-serif text-4xl tracking-[.2em] text-stone-500">
+          BIOGRAPHY
+        </h2>
+        <div className="mt-10">
+          <Biography />
+        </div>
+      </section>
     </div>
   );
 }
