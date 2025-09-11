@@ -27,7 +27,7 @@ export default function Home() {
           <MainVisual />
         </div>
         <div className="pb-20">
-          <div className="mx-4 md:mx-0">
+          <section className="mx-4 md:mx-0">
             <SectionHeading text="Snapshot" />
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-2">
@@ -55,8 +55,8 @@ export default function Home() {
                 <SectionText text={'「 」\nISO 200, F4.0 ,1/90s, 28mm'} className="md:col-start-1 md:row-start-1" />
               </div>
             </div>
-          </div>
-          <div className="mx-4 mt-8 md:mx-0">
+          </section>
+          <section className="mx-4 mt-8 md:mx-0">
             <SectionHeading text="Abstract" />
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-2">
@@ -87,7 +87,7 @@ export default function Home() {
                 />
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </main>
       <footer className="fixed bottom-0 z-10 w-full p-4 text-center font-serif text-sm text-white mix-blend-difference">

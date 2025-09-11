@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const MENU_DATA = [
-  { title: 'ABOUT', href: '#' },
+  { title: 'ABOUT', href: '/about' },
   { title: 'WORKS', href: '#' },
   { title: 'ARCHIVE', href: '#' },
   { title: 'CONTACT', href: '#' },
@@ -30,22 +30,10 @@ export const Header = ({ className }: Props) => {
   return (
     <>
       <header
-        className={twMerge(
-          'relative px-4 font-serif text-xs text-white sm:px-6',
-          isMenuOpen ? 'hidden' : 'flex mix-blend-difference',
-          className,
-        )}
+        className={twMerge('relative flex px-4 font-serif text-xs text-white mix-blend-difference sm:px-6', className)}
       >
-        <h1 className="grow tracking-[.2em]">
-          <button
-            type="button"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="cursor-pointer"
-          >
-            KAZUYA HASHIMOTO
-          </button>
+        <h1 className={twMerge('grow tracking-[.2em]', isMenuOpen ? 'hidden' : '')}>
+          <Link href="/">KAZUYA HASHIMOTO</Link>
         </h1>
         <nav aria-label="メイン" className="hidden md:block">
           <ul className="flex items-center gap-[80px] tracking-[-.02em] lg:gap-[120px]">
@@ -67,7 +55,10 @@ export const Header = ({ className }: Props) => {
           onClick={() => {
             setIsMenuOpen(true);
           }}
-          className="absolute top-[50%] right-2 -translate-y-1/2 transform cursor-pointer p-3 tracking-[-.02em] transition-opacity ease-in hover:opacity-50 sm:right-3 md:hidden"
+          className={twMerge(
+            'absolute top-[50%] right-2 -translate-y-1/2 transform cursor-pointer p-3 tracking-[-.02em] transition-opacity ease-in hover:opacity-50 sm:right-3 md:hidden',
+            isMenuOpen ? 'hidden' : '',
+          )}
         >
           MENU
         </button>

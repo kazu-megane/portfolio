@@ -1,15 +1,15 @@
 @import 'tailwindcss';
 
 :root {
-  --font-hina-mincho: 'Hina Mincho', serif;
+  --font-shippori-mincho: 'Shippori Mincho', serif;
 }
 
 @theme inline {
-  --font-sans: var(--font-hina-mincho);
+  --font-sans: var(--font-shippori-mincho);
   --font-serif: var(--font-lato);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-shippori-mincho), Arial, Helvetica, sans-serif;
 }

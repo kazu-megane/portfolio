@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Lato, Geist_Mono, Hina_Mincho } from 'next/font/google';
+import { Lato, Geist_Mono, Shippori_Mincho } from 'next/font/google';
 import './globals.css';
 
-const hinaMincho = Hina_Mincho({
-  variable: '--font-hina-mincho',
+const shipporiMincho = Shippori_Mincho({
+  variable: '--font-shippori-mincho',
   weight: ['400'],
   style: ['normal'],
   subsets: ['latin'],
@@ -34,7 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${hinaMincho.variable} ${lato.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body className={`${shipporiMincho.variable} ${lato.variable} ${geistMono.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
