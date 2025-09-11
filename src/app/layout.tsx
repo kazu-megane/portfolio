@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Lato, Geist_Mono, Shippori_Mincho } from 'next/font/google';
 import { Header } from '@/components/common/Header';
@@ -43,6 +44,7 @@ export default function RootLayout({
         <footer className="fixed bottom-0 z-10 w-full p-4 text-center font-serif text-sm text-white mix-blend-difference">
           <small>&copy; kazuya hashimoto</small>
         </footer>
+        <SpeedInsights />
       </body>
     </html>
   );
