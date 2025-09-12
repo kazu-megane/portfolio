@@ -3,9 +3,11 @@ import { ContentContainer } from '@/components/common/ContentContainer';
 import { SNS_DATA } from '@/constants';
 
 export const metadata: Metadata = {
-  title: 'Kazuya Hashimoto - Portfolio | About',
-  description:
-    'Portfolio of Kazuya Hashimoto, a design engineer and designer, photographer. | デザインエンジニア・デザイナー・フォトグラファー 橋本和也のポートフォリオサイト',
+  title: 'About',
+  openGraph: {
+    type: 'profile',
+    title: 'Kazuya Hashimoto - Portfolio | About',
+  },
 };
 
 const Introduction = () => {

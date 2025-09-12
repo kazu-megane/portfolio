@@ -3,9 +3,10 @@ import { ContentContainer } from '@/components/common/ContentContainer';
 import { CONTACT_DATA } from '@/constants';
 
 export const metadata: Metadata = {
-  title: 'Kazuya Hashimoto - Portfolio | Contact',
-  description:
-    'Portfolio of Kazuya Hashimoto, a design engineer and designer, photographer. | デザインエンジニア・デザイナー・フォトグラファー 橋本和也のポートフォリオサイト',
+  title: 'Contact',
+  openGraph: {
+    title: 'Kazuya Hashimoto - Portfolio | Contact',
+  },
 };
 
 export default function Contact() {

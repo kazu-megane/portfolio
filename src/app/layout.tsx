@@ -25,9 +25,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Kazuya Hashimoto - Portfolio',
+  title: {
+    template: 'Kazuya Hashimoto - Portfolio | %s',
+    default: 'Kazuya Hashimoto - Portfolio',
+  },
   description:
     'Portfolio of Kazuya Hashimoto, a design engineer and designer, photographer. | デザインエンジニア・デザイナー・フォトグラファー 橋本和也のポートフォリオサイト',
+  keywords: [
+    'Portfolio',
+    'ポートフォリオ',
+    'Frontend',
+    'フロントエンド',
+    'Engineer',
+    'エンジニア',
+    'Design Engineer',
+    'デザインエンジニア',
+    'Designer',
+    'デザイナー',
+    'Photographer',
+    'フォトグラファー',
+  ],
+  openGraph: {
+    type: 'website',
+    title: 'Kazuya Hashimoto - Portfolio',
+    description:
+      'Portfolio of Kazuya Hashimoto, a design engineer and designer, photographer. | デザインエンジニア・デザイナー・フォトグラファー 橋本和也のポートフォリオサイト',
+    url: 'https://kazuyaframe.work',
+    siteName: 'KAZUYA HASHIMOTO',
+  },
 };
 
 export default function RootLayout({
