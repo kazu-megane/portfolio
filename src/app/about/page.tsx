@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'profile',
     title: 'Kazuya Hashimoto - Portfolio | About',
+    url: 'https://kazuyaframe.work/about',
   },
 };
 

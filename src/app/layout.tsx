@@ -45,6 +45,7 @@ export const metadata: Metadata = {
     'Photographer',
     'フォトグラファー',
   ],
+  metadataBase: new URL('https://kazuyaframe.work'),
   openGraph: {
     type: 'website',
     title: 'Kazuya Hashimoto - Portfolio',
