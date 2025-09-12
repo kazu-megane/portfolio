@@ -70,7 +70,7 @@ export const Header = ({ className }: Props) => {
                   className={twMerge(
                     'transition-opacity ease-in hover:opacity-50',
                     pathname === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
-                    isTopPage ? 'decoration-white' : '',
+                    isTopPage ? 'decoration-sky-600' : '',
                   )}
                 >
                   {item.title}
