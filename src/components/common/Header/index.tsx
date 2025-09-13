@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { FocusTrap } from 'focus-trap-react';
 
 const MENU_DATA = [
   { title: 'HOME', href: '/' },
@@ -102,54 +103,56 @@ export const Header = ({ className }: Props) => {
           MENU
         </button>
       </header>
-      <div
-        id={MENU_ID}
-        className={twMerge(
-          'fixed top-0 left-0 z-30 flex h-full w-full items-center backdrop-blur-xl transition-opacity duration-300 ease-in-out',
-          isMenuOpen ? 'opacity-100' : 'invisible opacity-0',
-        )}
-        onClick={() => {
-          setIsMenuOpen(false);
-        }}
-      >
-        <nav className="mb-6 flex flex-col gap-4" aria-label="メイン">
-          <ul>
-            {MENU_DATA.map((item, index) => (
-              <li
-                key={item.title}
-                className={twMerge(
-                  'p-4 text-center transition-all duration-300 ease-in-out',
-                  isMenuOpen ? 'opacity-100' : 'opacity-0',
-                )}
-                style={{
-                  transitionDelay: isMenuOpen ? `${index * 100}ms` : `${(MENU_DATA.length - 1 - index) * 100}ms`,
-                }}
-              >
-                <Link
-                  href={item.href}
-                  onClick={(event) => {
-                    if (pathname === item.href) {
-                      event.preventDefault();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
+      <FocusTrap active={isMenuOpen} focusTrapOptions={{ clickOutsideDeactivates: true }}>
+        <div
+          id={MENU_ID}
+          className={twMerge(
+            'fixed top-0 left-0 z-30 flex h-full w-full items-center backdrop-blur-xl transition-opacity duration-300 ease-in-out',
+            isMenuOpen ? 'opacity-100' : 'invisible opacity-0',
+          )}
+          onClick={() => {
+            setIsMenuOpen(false);
+          }}
+        >
+          <nav className="mb-6 flex flex-col gap-4" aria-label="メイン">
+            <ul>
+              {MENU_DATA.map((item, index) => (
+                <li
+                  key={item.title}
                   className={twMerge(
-                    'font-serif text-lg text-stone-800',
-                    currentPage(pathname) === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
+                    'p-4 text-center transition-all duration-300 ease-in-out',
+                    isMenuOpen ? 'opacity-100' : 'opacity-0',
                   )}
+                  style={{
+                    transitionDelay: isMenuOpen ? `${index * 100}ms` : `${(MENU_DATA.length - 1 - index) * 100}ms`,
+                  }}
                 >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="grow px-4 text-right">
-          <button className="absolute top-[calc(50%-24px)] right-2 -translate-y-1/2 cursor-pointer p-3 font-serif text-xs text-stone-600">
-            CLOSE
-          </button>
+                  <Link
+                    href={item.href}
+                    onClick={(event) => {
+                      if (pathname === item.href) {
+                        event.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
+                    className={twMerge(
+                      'font-serif text-lg text-stone-800',
+                      currentPage(pathname) === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
+                    )}
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="grow px-4 text-right">
+            <button className="absolute top-[calc(50%-24px)] right-2 -translate-y-1/2 cursor-pointer p-3 font-serif text-xs text-stone-600">
+              CLOSE
+            </button>
+          </div>
         </div>
-      </div>
+      </FocusTrap>
     </>
   );
 };

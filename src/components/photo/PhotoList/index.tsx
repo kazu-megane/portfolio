@@ -8,6 +8,7 @@ import { type ListBlobResultBlob } from '@vercel/blob';
 import { getPhotos } from '../../../app/archive/photo/actions';
 import { AiOutlineClose } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
+import { FocusTrap } from 'focus-trap-react';
 
 const DURATION = 300;
 const IMAGE_MODAL_ID = 'image-modal';
@@ -70,46 +71,48 @@ const PhotoModal = ({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div
-      id={IMAGE_MODAL_ID}
-      role="dialog"
-      aria-modal="true"
-      aria-label="画像拡大表示モーダル"
-      className={twMerge(
-        `fixed inset-0 z-50 flex items-center justify-center transition-colors duration-${DURATION} ease-in-out`,
-        isModalVisible ? 'bg-black/75' : 'bg-black/0',
-      )}
-      onClick={handleClose}
-    >
-      <button
-        type="button"
-        aria-label="画像拡大表示モーダルを閉じる"
-        onClick={handleClose}
-        className={twMerge(
-          `absolute top-4 right-4 z-10 cursor-pointer rounded-full p-2 text-white transition-opacity hover:opacity-50 duration-${DURATION}`,
-          isModalVisible ? 'bg-stone-800' : 'bg-black/0',
-        )}
-      >
-        <AiOutlineClose />
-      </button>
+    <FocusTrap active={isModalVisible} focusTrapOptions={{ clickOutsideDeactivates: true }}>
       <div
+        id={IMAGE_MODAL_ID}
+        role="dialog"
+        aria-modal="true"
+        aria-label="画像拡大表示モーダル"
         className={twMerge(
-          `relative grid h-full max-h-[90vh] w-full max-w-[90vw] transform place-items-center transition-all duration-${DURATION} ease-in-out`,
-          isModalVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0',
+          `fixed inset-0 z-50 flex items-center justify-center transition-colors duration-${DURATION} ease-in-out`,
+          isModalVisible ? 'bg-black/75' : 'bg-black/0',
         )}
+        onClick={handleClose}
       >
-        {isLoading ? (
-          <span className="aspect-square w-full animate-pulse bg-stone-100 md:h-full md:w-auto"></span>
-        ) : null}
-        <Image
-          src={selectedImage.url}
-          alt="拡大された画像"
-          fill={true}
-          onLoadingComplete={() => setIsLoading(false)}
-          className={twMerge('object-contain', isLoading ? 'invisible' : 'visible')}
-        />
+        <button
+          type="button"
+          aria-label="画像拡大表示モーダルを閉じる"
+          onClick={handleClose}
+          className={twMerge(
+            `absolute top-4 right-4 z-10 cursor-pointer rounded-full p-2 text-white transition-opacity hover:opacity-50 duration-${DURATION}`,
+            isModalVisible ? 'bg-stone-800' : 'bg-black/0',
+          )}
+        >
+          <AiOutlineClose />
+        </button>
+        <div
+          className={twMerge(
+            `relative grid h-full max-h-[90vh] w-full max-w-[90vw] transform place-items-center transition-all duration-${DURATION} ease-in-out`,
+            isModalVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0',
+          )}
+        >
+          {isLoading ? (
+            <span className="aspect-square w-full animate-pulse bg-stone-100 md:h-full md:w-auto"></span>
+          ) : null}
+          <Image
+            src={selectedImage.url}
+            alt="拡大された画像"
+            fill={true}
+            onLoadingComplete={() => setIsLoading(false)}
+            className={twMerge('object-contain', isLoading ? 'invisible' : 'visible')}
+          />
+        </div>
       </div>
-    </div>
+    </FocusTrap>
   );
 };
 
