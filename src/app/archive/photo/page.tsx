@@ -10,6 +10,14 @@ export const metadata: Metadata = {
     'Portfolio of Kazuya Hashimoto, a design engineer and designer, photographer. | デザインエンジニア・デザイナー・フォトグラファー 橋本和也のポートフォリオサイト',
 };
 
+const Loading = () => {
+  return (
+    <div className="flex h-40 w-full items-center justify-center">
+      <span className="animate-pulse font-mono text-stone-400">Loading...</span>
+    </div>
+  );
+};
+
 export default async function Photo() {
   return (
     <ContentContainer>
@@ -20,7 +28,7 @@ export default async function Photo() {
             <h2 className="font-serif text-3xl tracking-[.2em] text-stone-500">PHOTO</h2>
           </div>
           <div className="mt-4 w-full grow md:mt-10">
-            <Suspense>
+            <Suspense fallback={<Loading />}>
               <PhotoList />
             </Suspense>
           </div>
