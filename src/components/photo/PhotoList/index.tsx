@@ -16,6 +16,7 @@ const IMAGE_MODAL_ID = 'image-modal';
 export const PHOTO_CATEGORY = {
   SNAP: 'snap',
   PORTRAIT: 'portrait',
+  WEDDING: 'wedding',
 } as const;
 export type PhotoCategory = (typeof PHOTO_CATEGORY)[keyof typeof PHOTO_CATEGORY];
 
@@ -29,6 +30,8 @@ function parseCategory(category: string | null) {
       return PHOTO_CATEGORY.SNAP;
     case 'portrait':
       return PHOTO_CATEGORY.PORTRAIT;
+    case 'wedding':
+      return PHOTO_CATEGORY.WEDDING;
     default:
       return PHOTO_CATEGORY.SNAP;
   }
