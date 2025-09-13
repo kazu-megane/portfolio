@@ -54,6 +54,9 @@ export const metadata: Metadata = {
     url: 'https://kazuyaframe.work',
     siteName: 'KAZUYA HASHIMOTO',
   },
+  verification: {
+    google: '_kV7vpIyiHzbi-xQ4lcRfGmw8A9DES5hZGEJGfAfGjE',
+  },
 };
 
 export default function RootLayout({
