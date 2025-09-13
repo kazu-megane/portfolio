@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { ContentContainer } from '@/components/common/ContentContainer';
 import { Breadcrumb } from '@/components/common/Breadcrumb';
 import { PhotoList } from '@/components/photo/PhotoList';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Archive | Photo',
@@ -19,7 +20,9 @@ export default async function Photo() {
             <h2 className="font-serif text-3xl tracking-[.2em] text-stone-500">PHOTO</h2>
           </div>
           <div className="mt-4 w-full grow md:mt-10">
-            <PhotoList />
+            <Suspense>
+              <PhotoList />
+            </Suspense>
           </div>
         </section>
       </div>
