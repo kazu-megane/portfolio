@@ -22,6 +22,9 @@ export default function Home() {
     <>
       <div className="grid h-svh place-items-center">
         <MainVisual />
+        <span className="absolute bottom-0 -translate-y-[calc(100%-40px)] font-serif text-xs font-bold tracking-[1em] text-white [writing-mode:vertical-rl] after:content-['→']">
+          SCROLL
+        </span>
       </div>
       <div className="pb-20">
         <section className="mx-4 md:mx-0">
