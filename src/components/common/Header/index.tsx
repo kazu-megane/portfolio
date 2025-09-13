@@ -18,6 +18,12 @@ type Props = {
   className?: string;
 };
 
+function currentPage(pathname: string) {
+  // 全ての下層ページでもアクティブにする
+  if (pathname.startsWith('/archive')) return '/archive';
+  return pathname;
+}
+
 export const Header = ({ className }: Props) => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,7 +75,7 @@ export const Header = ({ className }: Props) => {
                   }}
                   className={twMerge(
                     'transition-opacity ease-in hover:opacity-50',
-                    pathname === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
+                    currentPage(pathname) === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
                     isTopPage ? 'decoration-sky-600' : '',
                   )}
                 >
@@ -129,7 +135,7 @@ export const Header = ({ className }: Props) => {
                   }}
                   className={twMerge(
                     'font-serif text-lg text-stone-800',
-                    pathname === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
+                    currentPage(pathname) === item.href ? 'line-through decoration-orange-600 decoration-2' : '',
                   )}
                 >
                   {item.title}

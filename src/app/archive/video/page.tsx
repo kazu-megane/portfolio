@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { ContentContainer } from '@/components/common/ContentContainer';
 import { Breadcrumb } from '@/components/common/Breadcrumb';
+import { VideoList } from '@/components/video/VideoList';
 
 export const metadata: Metadata = {
   title: 'Archive | Video',
@@ -18,7 +19,7 @@ export default async function Video() {
             <h2 className="font-serif text-3xl tracking-[.2em] text-stone-500">VIDEO</h2>
           </div>
           <div className="mt-4 w-full grow md:mt-10">
-            <p>Video page content goes here.</p>
+            <VideoList />
           </div>
         </section>
       </div>

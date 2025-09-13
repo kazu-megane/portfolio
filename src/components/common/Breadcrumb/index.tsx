@@ -25,7 +25,7 @@ export const Breadcrumb = ({ className }: Props) => {
                   {value}
                 </span>
               ) : (
-                <Link href={href} className="text-blue-500 hover:underline">
+                <Link href={href} className="text-blue-500 transition-opacity ease-in hover:opacity-50">
                   {value}
                 </Link>
               )}

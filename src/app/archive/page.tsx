@@ -33,7 +33,7 @@ export default async function Archive() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="relative grid aspect-[4/3] w-full place-items-end rounded-tr-md rounded-b-md border-2 border-stone-300 bg-stone-100 p-4 font-mono text-sm font-bold text-stone-400 before:absolute before:top-[-6px] before:left-[-2px] before:h-3 before:w-1/3 before:-translate-y-1/2 before:rounded-t-sm before:bg-stone-400 before:content-[''] hover:opacity-50"
+                    className="relative grid aspect-[4/3] w-full place-items-end rounded-tr-md rounded-b-md border-2 border-stone-300 bg-stone-100 p-4 font-mono text-sm font-bold text-stone-400 transition-opacity ease-in before:absolute before:top-[-6px] before:left-[-2px] before:h-3 before:w-1/3 before:-translate-y-1/2 before:rounded-t-sm before:bg-stone-400 before:content-[''] hover:opacity-50"
                   >
                     {link.label}
                   </Link>

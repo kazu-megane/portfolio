@@ -14,7 +14,7 @@ export default async function Photo() {
     <ContentContainer>
       <div className="flex flex-col">
         <section className="flex flex-col items-start md:flex-row md:gap-10">
-          <div className="sticky top-[80px] flex w-full shrink-0 flex-col gap-4 md:max-w-[280px]">
+          <div className="sticky top-[80px] z-10 flex w-full shrink-0 flex-col gap-4 md:max-w-[280px]">
             <Breadcrumb />
             <h2 className="font-serif text-3xl tracking-[.2em] text-stone-500">PHOTO</h2>
           </div>
