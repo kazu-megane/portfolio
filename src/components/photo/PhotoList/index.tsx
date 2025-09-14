@@ -49,7 +49,9 @@ const LazyImage = ({ selected, image, onClick }: { selected: boolean; image: Ima
       onClick={onClick}
       className="relative aspect-square w-full cursor-pointer transition-all ease-in hover:scale-105 hover:opacity-70"
     >
-      {isLoading ? <span className="block h-full w-full animate-pulse bg-stone-100" /> : null}
+      {isLoading ? (
+        <span role="status" aria-label="読み込み中" className="block h-full w-full animate-pulse bg-stone-100" />
+      ) : null}
       <Image
         src={image.url}
         alt=""
@@ -159,6 +161,7 @@ export const PhotoList = () => {
       setImages((prevImages) => [...prevImages, ...categorizedImages]);
       isFetching.current = false;
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paramCategory]);
 
   return (
@@ -183,14 +186,16 @@ export const PhotoList = () => {
               .filter((image) => image.category === paramCategory)
               .filter((image) => image.size)
               .map((image, index) => (
-                <li key={index}>
+                <li key={index} aria-label={`${image.category}の画像 ${index + 1}`} className="relative">
                   <LazyImage selected={selectedImage === image} image={image} onClick={() => setSelectedImage(image)} />
                 </li>
               ))
           : Array.from({ length: 9 }).map((_, index) => (
-              <div key={index} role="status" className="relative aspect-square w-full">
-                <div className="h-full w-full animate-pulse bg-stone-100" />
-              </div>
+              <li key={index}>
+                <div role="status" aria-label="読み込み中" className="relative aspect-square w-full">
+                  <div className="h-full w-full animate-pulse bg-stone-100" />
+                </div>
+              </li>
             ))}
       </ul>
       {selectedImage ? (
