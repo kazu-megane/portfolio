@@ -104,7 +104,7 @@ const Biography = () => {
       events: ['LINEヤフー株式会社 入社', 'デザインエンジニアとしてサービス開発に従事'],
     },
     {
-      year: '2020-2023',
+      year: '2020-2024',
       events: ['Designship 運営', 'エンジニアチーム、ブランドチーム、スチールチームに所属'],
     },
     {
@@ -122,7 +122,7 @@ const Biography = () => {
       events: ['Joined LINE Yahoo Corporation', 'Engaged in service development as a Design Engineer'],
     },
     {
-      year: '2020-2023',
+      year: '2020-2024',
       events: ['Operated Designship', 'Belonged to the engineering team, brand team, and still team'],
     },
     {
